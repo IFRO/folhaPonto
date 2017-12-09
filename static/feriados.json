@@ -21,17 +21,6 @@
         "state": "RO"
     },
     {
-        "date": "",
-        "title": "Sexta-Feira da Paixão",
-        "description": "Data cristã na qual a morte de Cristo é lembrada.",
-        "legislation": "Lei nº 9.093, de 12 de setembro de 1995 - http://www.planalto.gov.br/ccivil_03/Leis/L9093.htm",
-        "type": "Feriado Nacional",
-        "startTime": "",
-        "endTime": "",
-        "computedDate": {"month":3, "weekday": 7, "skip": 1},
-        "country": "Brasil"
-    },
-    {
         "date": "21/04",
         "title": "Tiradentes",
         "description": "Homenagem ao mártir da Inconfidência Mineira",

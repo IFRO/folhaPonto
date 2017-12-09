@@ -3,140 +3,139 @@
     <div v-for="(page, i) in chunks">
       <FolhaPontoCabecalho />
 
-        <h3>FOLHA DE PONTO {{ i + 1 }}a QUINZENA</h3>
-        <table class="table table-bordered table-sm">
-            <tr>
-                <td>
-                    Órgão ou Entidade
-                </td>
-                <td colspan="5">
-                    {{ fp.orgao }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Mês
-                </td>
-                <td>
-                    {{ mesAtual.toUpperCase() }}
-                </td>
-                <td>
-                    Ano
-                </td>
-                <td colspan="3">
-                    {{ fp.ano }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Servidor
-                </td>
-                <td colspan="3">
-                    {{ fp.nomeServidor }}
-                </td>
-                <td>
-                    Matícula
-                </td>
-                <td>
-                    {{ fp.matriculaSiape }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Cargo
-                </td>
-                <td>
-                    {{ fp.cargo }}
-                </td>
-                <td>
-                    Lotação
-                </td>
-                <td>
-                    {{ fp.lotacao }}
-                </td>
-                <td>
-                    C. Horária
-                </td>
-                <td>
-                    {{ fp.ch }}
-                </td>
-            </tr>
-        </table>
-        <h4>Somatório de horas de:</h4>
+      <h3>FOLHA DE PONTO {{ i + 1 }}a QUINZENA</h3>
+      <table class="table table-bordered table-sm">
+        <tr>
+          <td>
+            Órgão ou Entidade
+          </td>
+          <td colspan="5">
+            {{ fp.orgao }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Mês
+          </td>
+          <td>
+            {{ mesAtual.toUpperCase() }}
+          </td>
+          <td>
+            Ano
+          </td>
+          <td colspan="3">
+            {{ fp.ano }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Servidor
+          </td>
+          <td colspan="3">
+            {{ fp.nomeServidor }}
+          </td>
+          <td>
+            Matícula
+          </td>
+          <td>
+            {{ fp.matriculaSiape }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Cargo
+          </td>
+          <td>
+            {{ fp.cargo }}
+          </td>
+          <td>
+            Lotação
+          </td>
+          <td>
+            {{ fp.lotacao }}
+          </td>
+          <td>
+            C. Horária
+          </td>
+          <td>
+            {{ fp.ch }}
+          </td>
+        </tr>
+      </table>
+      <h4>Somatório de horas de:</h4>
 
-        <table class="table table-sm">
-            <tr>
-                <td>- Atrasos e Saídas Antecipadas</td>
-                <td style="width: 30%">___:___</td>
-                <td>- Licenças</td>
-                <td style="width: 30%">___:___</td>
-            </tr>
-            <tr>
-                <td>- Faltas injustificadas</td>
-                <td>___:___</td>
-                <td>- Faltasjustificadas</td>
-                <td>___:___</td>
-            </tr>
-            <tr>
-                <td>- Frequência</td>
-                <td>___:___</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
+      <table class="table table-sm">
+        <tr>
+          <td>- Atrasos e Saídas Antecipadas</td>
+          <td style="width: 30%">___:___</td>
+          <td>- Licenças</td>
+          <td style="width: 30%">___:___</td>
+        </tr>
+        <tr>
+          <td>- Faltas injustificadas</td>
+          <td>___:___</td>
+          <td>- Faltasjustificadas</td>
+          <td>___:___</td>
+        </tr>
+        <tr>
+          <td>- Frequência</td>
+          <td>___:___</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
 
-        <table class="table table-bordered table-stripped table-sm table-h" style="margin-top: 15px">
-            <thead>
-                <tr>
-                    <th>Dia</th>
-                    <th>Hora Entrada</th>
-                    <th>Hora Saída</th>
-                    <th>Hora Entrada</th>
-                    <th>Hora Saída</th>
-                    <th>Rubrica Servidor</th>
-                    <th>Ocor.</th>
-                    <th>Abono C. Imed.</th>
-                    <th>Hrs. Trab.</th>
-                    <th>Comp.</th>
-                    <th>Hora Extra</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="i in page">
-                  <td>{{i.getDate()}}</td>
-                  <!-- <template v-if="Feriado(i).ehFeriado"> -->
-                  <template v-if="true">
-                      <td colspan="4">
-                        <!-- {{ Feriado(i).qual }} -->
-                      </td>
-                  </template>
-                  <template v-else>
-                      <td v-for="n in 4">
-                        <!-- {{SabOuDom(i.getDay())}} -->
-                      </td>
-                  </template>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>___:___</td>
-                </tr>
-            </tbody>
-        </table>
-        <p>OBS: A folha de ponto deverá ser encaminhada à Diretoria de Gestão de Pessoas até o 5o dia útil do mês subsequente.</p>
-        <div class="clearfix">
-            <p class="float-left">Data: ___/___/___</p>
-            <p class="float-right">Assinatura do Servidor:____________________________________________________ </p>
-        </div>
+      <table class="table table-bordered table-stripped table-sm table-h" style="margin-top: 15px">
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Hora Entrada</th>
+            <th>Hora Saída</th>
+            <th>Hora Entrada</th>
+            <th>Hora Saída</th>
+            <th>Rubrica Servidor</th>
+            <th>Ocor.</th>
+            <th>Abono C. Imed.</th>
+            <th>Hrs. Trab.</th>
+            <th>Comp.</th>
+            <th>Hora Extra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="i in page">
+            <td>{{i.getDate()}}</td>
+            <template v-if="feriado(i).ehFeriado">
+              <td colspan="4">
+                {{ feriado(i).qual }}
+              </td>
+            </template>
+            <template v-else>
+              <td v-for="n in 4">
+                {{ ehSabOuDom(i.getDay()) }}
+              </td>
+            </template>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>:</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>OBS: A folha de ponto deverá ser encaminhada à Diretoria de Gestão de Pessoas até o 5o dia útil do mês subsequente.</p>
+      <div class="clearfix">
+        <p class="float-left">Data: ___/___/___</p>
+        <p class="float-right">Assinatura do Servidor:____________________________________________________ </p>
+      </div>
 
-        <p class="text-right">Visto do Chefe imediato:____________________________________________________</p>
-        <p>
-            Observações:
-            <p style="border-bottom: 1px solid black; margin-top: 10px">&nbsp;</p>
-            <p style="border-bottom: 1px solid black; margin-top: 10px">&nbsp;</p>
-            <p style="border-bottom: 1px solid black; margin-top: 10px">&nbsp;</p>
-        </p>
+      <p class="text-right">Visto do Chefe imediato:____________________________________________________</p>
+      <p>
+        Observações:
+        <p style="border-bottom: 1px solid black; margin-top: 10px">&nbsp;</p>
+        <p style="border-bottom: 1px solid black; margin-top: 10px">&nbsp;</p>
+        <p style="border-bottom: 1px solid black; margin-top: 10px">&nbsp;</p>
+      </p>
     </div>
   </div>
 </template>
@@ -152,6 +151,7 @@ export default {
     return {
       meses: 'janeiro_fevereiro_março_abril_maio_junho_julho_agosto_setembro_outubro_novembro_dezembro'.split('_'),
       monthDays: [],
+      feriados: [],
       fp: {
         ano: null,
         mes: null,
@@ -168,15 +168,37 @@ export default {
     }
   },
   computed: {
-    mesAtual() {
-        return this.meses[this.fp.mes];
+    mesAtual () {
+      return this.meses[this.fp.mes]
     },
     chunks () {
       return _.chunk(this.monthDays, Math.ceil(this.monthDays.length / 2))
     }
   },
+  methods: {
+    feriado (date) {
+      var day = date.getDate()
+      var month = date.getMonth() + 1
+      var k = day + '/' + month
+      if (typeof this.feriados[k] === 'undefined') {
+        return { ehFeriado: false }
+      } else {
+        return { ehFeriado: true, qual: this.feriados[k] }
+      }
+    },
+    ehSabOuDom (day) {
+      if (day === 0) {
+        return 'DOM'
+      } else if (day === 6) {
+        return 'SÁB'
+      } else {
+        return ':'
+      }
+    }
+  },
   mounted () {
     let fpData = JSON.parse(localStorage.getItem('fp-data'))
+    let feriados = JSON.parse(localStorage.getItem('app-feriados'))
 
     for (var variable in fpData) {
       if (fpData.hasOwnProperty(variable)) {
@@ -184,8 +206,45 @@ export default {
       }
     }
 
+    feriados.forEach((f) => {
+      let fdate = f.date
+
+      // {
+      //     "date": "",
+      //     "title": "Sexta-Feira da Paixão",
+      //     "description": "Data cristã na qual a morte de Cristo é lembrada.",
+      //     "legislation": "Lei nº 9.093, de 12 de setembro de 1995 - http://www.planalto.gov.br/ccivil_03/Leis/L9093.htm",
+      //     "type": "Feriado Nacional",
+      //     "startTime": "",
+      //     "endTime": "",
+      //     "computedDate": {"month":3, "weekday": 5, "skip": 1},
+      //     "country": "Brasil"
+      // },
+      // if (_.isEmpty(f.date) && _.isObject(f.computedDate)) {
+      //   let date = new Date(this.fp.ano, f.computedDate.month, 1)
+      //
+      //   let skip = 0
+      //   let found = false
+      //
+      //   while (!found) {
+      //     console.log(date.getDay() === f.computedDate.weekday, date.getDay(), f.computedDate.weekday)
+      //     if (date.getDay() === f.computedDate.weekday) {
+      //       skip++
+      //     }
+      //     if (skip <= f.computedDate.skip || date.getMonth() > f.computedDate.month) {
+      //       date.setDate(date.getDate() + 1)
+      //     } else {
+      //       found = true
+      //     }
+      //   }
+      //   console.log(date)
+      //   fdate = date.getDate() + '/' + date.getMonth()
+      // }
+      this.feriados[fdate] = f.title
+    })
+
     this.monthDays.splice(0)
-    // while(this.monthDays.length > 0) {this.monthDays.pop();}
+    // while(this.monthDays.length > 0) {this.monthDays.pop()}
     this.date = new Date(this.fp.ano, this.fp.mes, 1)
 
     while (this.date.getMonth() === this.fp.mes) { // this.currentDate.getMonth()
@@ -199,7 +258,7 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- Add 'scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>

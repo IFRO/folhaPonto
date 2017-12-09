@@ -6,7 +6,15 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  mounted () {
+    fetch('static/feriados.json')
+      .then((r) => r.json())
+      .then((result) => {
+        localStorage.setItem('app-feriados', JSON.stringify(result))
+        console.log(result)
+      })
+  }
 }
 </script>
 
