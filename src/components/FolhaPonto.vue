@@ -1,9 +1,10 @@
 <template>
   <div class="folha-ponto">
+    <router-link :to="{ name: 'Config', params: {} }" class="btn btn-sm d-print-none">Voltar</router-link>
     <div v-for="(page, i) in chunks">
       <FolhaPontoCabecalho />
 
-      <h3>FOLHA DE PONTO {{ i + 1 }}a QUINZENA</h3>
+      <h5>FOLHA DE PONTO {{ i + 1 }}a QUINZENA</h5>
       <table class="table table-bordered table-sm">
         <tr>
           <td>
@@ -62,19 +63,19 @@
           </td>
         </tr>
       </table>
-      <h4>Somatório de horas de:</h4>
+      <strong>Somatório de horas de:</strong>
 
-      <table class="table table-sm">
+      <table class="table table-sm table-fsm">
         <tr>
           <td>- Atrasos e Saídas Antecipadas</td>
-          <td style="width: 30%">___:___</td>
+          <td>___:___</td>
           <td>- Licenças</td>
-          <td style="width: 30%">___:___</td>
+          <td>___:___</td>
         </tr>
         <tr>
           <td>- Faltas injustificadas</td>
           <td>___:___</td>
-          <td>- Faltasjustificadas</td>
+          <td>- Faltas justificadas</td>
           <td>___:___</td>
         </tr>
         <tr>
@@ -85,7 +86,7 @@
         </tr>
       </table>
 
-      <table class="table table-bordered table-stripped table-sm table-h" style="margin-top: 15px">
+      <table class="table table-bordered table-stripped table-sm table-h table-fsm" style="margin-top: 15px">
         <thead>
           <tr>
             <th>Dia</th>
@@ -123,19 +124,18 @@
           </tr>
         </tbody>
       </table>
-      <p>OBS: A folha de ponto deverá ser encaminhada à Diretoria de Gestão de Pessoas até o 5o dia útil do mês subsequente.</p>
+      <p><small>OBS: A folha de ponto deverá ser encaminhada à Diretoria de Gestão de Pessoas até o 5o dia útil do mês subsequente.</small></p>
       <div class="clearfix">
         <p class="float-left">Data: ___/___/___</p>
         <p class="float-right">Assinatura do Servidor:____________________________________________________ </p>
       </div>
 
       <p class="text-right">Visto do Chefe imediato:____________________________________________________</p>
-      <p>
-        Observações:
-        <p style="border-bottom: 1px solid black; margin-top: 10px">&nbsp;</p>
-        <p style="border-bottom: 1px solid black; margin-top: 10px">&nbsp;</p>
-        <p style="border-bottom: 1px solid black; margin-top: 10px">&nbsp;</p>
-      </p>
+      <p>Observações:</p>
+      <p style="border-bottom: 1px solid black; margin-top: 6px">&nbsp;</p>
+      <p style="border-bottom: 1px solid black; margin-top: 6px">&nbsp;</p>
+      <p style="border-bottom: 1px solid black; margin-top: 6px">&nbsp;</p>
+      <div class="page-break" v-if="i===0"></div>
     </div>
   </div>
 </template>
@@ -199,6 +199,7 @@ export default {
   mounted () {
     let fpData = JSON.parse(localStorage.getItem('fp-data'))
     let feriados = JSON.parse(localStorage.getItem('app-feriados'))
+    let meusFeriados = JSON.parse(localStorage.getItem('meus-feriados'))
 
     for (var variable in fpData) {
       if (fpData.hasOwnProperty(variable)) {
@@ -243,6 +244,8 @@ export default {
       this.feriados[fdate] = f.title
     })
 
+    Object.assign(this.feriados, meusFeriados)
+
     this.monthDays.splice(0)
     // while(this.monthDays.length > 0) {this.monthDays.pop()}
     this.date = new Date(this.fp.ano, this.fp.mes, 1)
@@ -260,5 +263,9 @@ export default {
 
 <!-- Add 'scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+@media print {
+  body, table { font-size: 0.85rem }
+  .page-break {page-break-after: always;}
+  /*table.table-fsm { font-size: 0.8rem }*/
+}
 </style>

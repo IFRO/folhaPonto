@@ -72,15 +72,18 @@
           </div>
         </div>
 
+        <h3>Adicionar Feriado personalizado</h3>
         <div class="row">
           <div class="col">
-            <input type="text" v-model="novoFeriadoData">
+            <input class="form-control" type="text" v-model="novoFeriadoData" placeholder="Data">
           </div>
           <div class="col">
-            <input type="text" v-model="novoFeriadoTitulo">
+            <input class="form-control" type="text" v-model="novoFeriadoTitulo" placeholder="Título">
           </div>
           <div class="col">
-            <input type="button" v-on:click="addNovoFeriado()">
+            <button type="button" class="btn btn-primary btn-sm" v-on:click="addNovoFeriado()">
+              Add Feriado
+            </button>
           </div>
         </div>
 
@@ -93,7 +96,7 @@
           </ul>
         </div>
 
-        <button type="button" class="btn btn-primary" v-on:click="salva">Salvar dados para a proxima</button>
+        <button type="button" class="btn btn-primary" v-on:click="exibeFolha">Exibe Folha</button>
       </div>
     </div>
 
@@ -132,17 +135,23 @@ export default {
     }
   },
   methods: {
-    salva () {
+    exibeFolha () {
       localStorage.setItem('fp-data', JSON.stringify(this.fp))
+      this.$router.push('/folha-ponto')
     },
     addNovoFeriado () {
       this.$set(this.feriados, this.novoFeriadoData, this.novoFeriadoTitulo)
-      // this.feriados[this.novoFeriadoData] = this.novoFeriadoTitulo
-      // this.feriados = Object.assign({}, this.feriados, { a: 1, b: 2 })
       this.novoFeriadoData = this.novoFeriadoTitulo = ''
     }
   },
+  beforeRouteLeave (to, from, next) {
+    localStorage.setItem('meus-feriados', JSON.stringify(this.feriados))
+    next()
+  },
   mounted () {
+    // limpa feriados personalizados anteriores
+    localStorage.removeItem('meus-feriados')
+
     let fpData = JSON.parse(localStorage.getItem('fp-data'))
     this.appFeriados = JSON.parse(localStorage.getItem('app-feriados'))
 
